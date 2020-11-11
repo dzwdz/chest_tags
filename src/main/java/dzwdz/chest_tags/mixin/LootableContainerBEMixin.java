@@ -1,7 +1,7 @@
 package dzwdz.chest_tags.mixin;
 
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.block.entity.ChestBlockEntity;
+import net.minecraft.block.entity.LockableContainerBlockEntity;
 import net.minecraft.block.entity.LootableContainerBlockEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.text.Text;
@@ -12,9 +12,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @SuppressWarnings("UnresolvedMixinReference")
-@Mixin(ChestBlockEntity.class)
-public abstract class ChestBEMixin extends LootableContainerBlockEntity {
-    public ChestBEMixin(BlockEntityType<?> type) {
+@Mixin(LootableContainerBlockEntity.class)
+public abstract class LootableContainerBEMixin extends LockableContainerBlockEntity {
+    public LootableContainerBEMixin(BlockEntityType<?> type) {
         super(type);
     }
 

@@ -47,7 +47,7 @@ public class ChestRendererMixin {
                 if (!centered)
                     matrices.translate(.3, 0, 0);
 
-                ChestTags.renderTag(matrices, text, vertexConsumers, light, centered);
+                ChestTags.renderTag(matrices, text, vertexConsumers, light, centered, false);
 
                 matrices.pop();
             }

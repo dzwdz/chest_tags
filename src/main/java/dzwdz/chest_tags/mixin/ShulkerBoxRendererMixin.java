@@ -34,7 +34,7 @@ public abstract class ShulkerBoxRendererMixin extends BlockEntityRenderer {
             matrices.translate(.5, 1.5, .5);
             matrices.multiply(dispatcher.camera.getRotation());
 
-            ChestTags.renderTag(matrices, text, vertexConsumers, light, true);
+            ChestTags.renderTag(matrices, text, vertexConsumers, light, true, true);
 
             matrices.pop();
         }

@@ -4,7 +4,7 @@
   "package": "dzwdz.chest_tags.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "ChestBEMixin"
+    "LootableContainerBEMixin"
   ],
   "client": [
     "ChestRendererMixin",
