@@ -4,9 +4,10 @@
   "package": "dzwdz.chest_tags.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "ChestRendererMixin"
+    "ChestBEMixin"
   ],
   "client": [
+    "ChestRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

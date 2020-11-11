@@ -32,7 +32,7 @@ public class ChestTags implements ModInitializer {
         float g = MinecraftClient.getInstance().options.getTextBackgroundOpacity(0.25F);
         int j = (int)(g * 255.0F) << 24;
         TextRenderer textRenderer = MinecraftClient.getInstance().textRenderer;
-        textRenderer.draw(text, 0, 0, -1, true, matrix4f, vertexConsumers, false, 0, light);
+        textRenderer.draw(text, 0, 0, -1, false, matrix4f, vertexConsumers, false, 0, light);
 
         matrices.pop();
     }

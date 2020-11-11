@@ -8,7 +8,7 @@
   "contact": {},
   "license": "MPL-2.0",
   "icon": "assets/chest_tags/icon.png",
-  "environment": "client",
+  "environment": "*",
   "entrypoints": {
     "main": [
       "dzwdz.chest_tags.ChestTags"
