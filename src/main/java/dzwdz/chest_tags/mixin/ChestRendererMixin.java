@@ -8,6 +8,7 @@ import net.minecraft.block.entity.ChestBlockEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.ChestBlockEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.client.util.math.Vector3f;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -35,8 +36,17 @@ public class ChestRendererMixin {
             DoubleBlockProperties.PropertySource<? extends ChestBlockEntity> propertySource2 = ((ChestBlock)block).getBlockEntitySource(blockState, world, entity.getPos(), true);
             Text text = propertySource2.apply(new ChestNameRetriever()).get();
 
-            if (text != null)
-                ChestTags.renderTag(matrices, entity, text, vertexConsumers, light);
+            if (text != null) {
+                matrices.push();
+                matrices.translate(.5, 0, .5);
+                float f = blockState.get(ChestBlock.FACING).asRotation();
+                matrices.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(180-f));
+                matrices.translate(.3, .4, -.45);
+
+                ChestTags.renderTag(matrices, text, vertexConsumers, light);
+
+                matrices.pop();
+            }
         }
     }
 }
