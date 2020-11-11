@@ -31,7 +31,9 @@ public class ChestRendererMixin {
         Block block = blockState.getBlock();
 
         if (block instanceof ChestBlock) {
-            if (ChestBlock.getDoubleBlockType(blockState) == DoubleBlockProperties.Type.SECOND) return;
+            DoubleBlockProperties.Type type = ChestBlock.getDoubleBlockType(blockState);
+            if (type == DoubleBlockProperties.Type.SECOND) return;
+            boolean centered = type == DoubleBlockProperties.Type.SINGLE;
 
             DoubleBlockProperties.PropertySource<? extends ChestBlockEntity> propertySource2 = ((ChestBlock)block).getBlockEntitySource(blockState, world, entity.getPos(), true);
             Text text = propertySource2.apply(new ChestNameRetriever()).get();
@@ -41,9 +43,11 @@ public class ChestRendererMixin {
                 matrices.translate(.5, 0, .5);
                 float f = blockState.get(ChestBlock.FACING).asRotation();
                 matrices.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(180-f));
-                matrices.translate(.3, .4, -.45);
+                matrices.translate(0, .4, -.45);
+                if (!centered)
+                    matrices.translate(.3, 0, 0);
 
-                ChestTags.renderTag(matrices, text, vertexConsumers, light);
+                ChestTags.renderTag(matrices, text, vertexConsumers, light, centered);
 
                 matrices.pop();
             }

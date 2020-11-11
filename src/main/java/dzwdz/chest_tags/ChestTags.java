@@ -13,13 +13,17 @@ public class ChestTags implements ModInitializer {
 
     }
 
-    public static void renderTag(MatrixStack matrices, Text text, VertexConsumerProvider vertexConsumers, int light) {
+    public static void renderTag(MatrixStack matrices, Text text, VertexConsumerProvider vertexConsumers, int light, boolean centered) {
         matrices.push();
         matrices.scale(-0.025F, -0.025F, 0.025F);
 
         Matrix4f matrix4f = matrices.peek().getModel();
+        float x = 0;
+        if (centered) {
+            x = -MinecraftClient.getInstance().textRenderer.getWidth(text) / 2f;
+        }
         MinecraftClient.getInstance().textRenderer
-                .draw(text, 0, 0, -1, false, matrix4f, vertexConsumers, false, 0, light);
+                .draw(text, x, 0, -1, false, matrix4f, vertexConsumers, false, 0, light);
         matrices.pop();
     }
 }
